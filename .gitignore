@@ -1,0 +1,50 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# --- Environment ---
+.env
+.env.local
+*.env
+
+# --- Virtual environment ---
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+
+# --- IDE & OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Databases ---
+*.sqlite3
+*.db
+*.sqlite
+
+# --- Logs & cache ---
+*.log
+logs/
+.cache/
+__pypackages__/
+
+# --- Build & distribution ---
+build/
+dist/
+*.egg-info/
+*.spec
+
+# --- Local files ---
+*.bak
+*.tmp
+
+# --- Exported data ---
+exports/
+*.xlsx
+*.docx
