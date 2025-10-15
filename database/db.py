@@ -15,11 +15,22 @@ PHOTOS_DIR = 'photos'
 if not os.path.exists(PHOTOS_DIR):
     os.makedirs(PHOTOS_DIR)
 
-# ✅ ПЕРЕСОЗДАЁМ БД ПРЯМО ЗДЕСЬ (ЕДИНСТВЕННЫЙ РАЗ!)
+# ✅ СОЗДАЁМ БД ТОЛЬКО ЕСЛИ ЕЁ НЕТ
 engine = create_engine(f'sqlite:///{DB_PATH}')
-Base.metadata.drop_all(engine)  # Удаляем старую
-Base.metadata.create_all(engine)  # Создаём новую с photo_path
-print("✅ БАЗА ПЕРЕСОЗДАНА с photo_path!")  # Подтверждение
+
+# Проверяем, существует ли файл БД
+db_exists = os.path.exists(DB_PATH)
+
+if not db_exists:
+    # Создаём БД только если её нет
+    Base.metadata.create_all(engine)
+    logger.info("✅ База данных создана с нуля")
+else:
+    # Если БД существует, просто проверяем структуру
+    # Это создаст недостающие таблицы, но не удалит существующие данные
+    Base.metadata.create_all(engine)
+    logger.info("✅ База данных загружена")
+
 Session = sessionmaker(bind=engine)
 
 def save_data(data: dict) -> bool:
