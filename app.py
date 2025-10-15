@@ -5,10 +5,15 @@ from handlers.admin import router as admin_router
 import asyncio
 import logging
 
+
 logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
 
 bot = Bot(token=BOT_TOKEN)
+
 dp = Dispatcher()
+
 
 dp.include_router(user_router)
 dp.include_router(admin_router)

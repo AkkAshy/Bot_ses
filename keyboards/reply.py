@@ -53,7 +53,7 @@ main_menu_keyboard = ReplyKeyboardMarkup(
 admin_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text="📊 Экспорт Excel")],
-        [KeyboardButton(text="📝 Экспорт Word")],
+        [KeyboardButton(text="📝  Word")],
         [KeyboardButton(text="📈 Статистика")],
         [KeyboardButton(text="🔙 В главное меню")]
     ],

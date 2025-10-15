@@ -18,14 +18,14 @@ router = Router()
 
 from config import ADMINS
 
-@router.message(F.text == '/start')
-async def start_handler(message: Message, state: FSMContext):
-    await state.clear()
+@router.message(F.text == '/start', F.from_user.id.in_(ADMINS))
+async def admin_start_handler(message: Message):
+    """Админ заходит — показывает админ-клавиатуру"""
     await message.answer(
-        "Здравствуйте! Этот бот собирает данные об образовательных учреждениях для СЭС.\n"
-        "Выберите действие ниже."
+        "👑 **Панель администратора СЭС**\n"
+        "Выберите действие:"
     )
-    await message.answer("Главное меню:", reply_markup=main_menu_keyboard)
+    await message.answer("Админ-меню:", reply_markup=admin_keyboard)
 
 @router.message(F.text == "📝 Добавить учреждение")
 async def add_institution_handler(message: Message, state: FSMContext):
