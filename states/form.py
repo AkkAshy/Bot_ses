@@ -7,4 +7,5 @@ class Form(StatesGroup):
     waiting_for_address = State()
     waiting_for_landmark = State()
     waiting_for_location = State()
+    waiting_for_photo = State()
     confirmation = State()
